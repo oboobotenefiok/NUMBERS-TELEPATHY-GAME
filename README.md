@@ -1,4 +1,4 @@
-# OBOT'S NUMBERS TELEPATHY GAME
+# NUMBERS TELEPATHY GAME
 
 > Hi friend, this is a fun little game where you try to **read the computer's mind** by guessing its secret number!
 
@@ -97,7 +97,7 @@ NUMBERS TELEPATHY GAME/
 **Cargo.toml:**
 ```toml
 [package]
-name = "obot_telepathy_game"
+name = "NUMBERS TELEPATHY GAME"
 version = "0.1.0"
 edition = "2021"
 
