@@ -82,8 +82,9 @@ I want you to see it like playing "Hot & Cold" with a computer friend. To me, th
 
 ```
 
-NUMBERS TELEPATHY GAME/
+numbers_telepathy_game/
 ├── Cargo.toml
+├── Cargo.lock (This is automatically generated when you run the game)
 └── src/
 └── main.rs
 ├── README.md
@@ -97,12 +98,12 @@ NUMBERS TELEPATHY GAME/
 **Cargo.toml:**
 ```toml
 [package]
-name = "NUMBERS TELEPATHY GAME"
+name = "numbers_telepathy_game"
 version = "0.1.0"
-edition = "2021"
+edition = "2024"
 
 [dependencies]
-rand = "0.8"
+rand = "0.9"
 ```
 
 src/main.rs:
@@ -142,7 +143,7 @@ fn main() {
 
 ---
 
-How to Run
+## How to Run
 
 1. Install Rust (if you haven't already)
 2. Create the project folder with the files above
@@ -155,14 +156,35 @@ How to Run
 
 ---
 
-What is This?
+# **OR**
+## **Quick Installation**
+
+#### **Clone the repository**
+```bash
+git clone https://github.com/oboobotenefiok/numbers_telepathy_game.git
+```
+#### **Enter the game directory**
+```bash
+cd numbers_telepathy_game
+```
+#### Run the game
+```bash
+cargo run
+
+```
+
+When you run the game for the first time, Cargo will automatically create a cargo.lock file.
+
+### What is This?
 
 This is a Rust programming project that demonstrates:
 
-· Random number generation
-· User input handling
-· Game logic with loops and conditions
-· Fun console interactions
-. And a couple other Rust concepts to boost my understanding
+ - Random number generation
+ - User input handling
+ - Game logic with loops and conditions
+ - Fun console interactions
+ - And a couple other Rust concepts to boost my understanding
 
-Good Luck & Good Playing :-)
+###### Good Luck & Good Playing :-)
+
+#### Obot Obo - ( Developer )
