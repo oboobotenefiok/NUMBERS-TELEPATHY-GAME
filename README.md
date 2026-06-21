@@ -2,6 +2,7 @@
 
 > Hi friend, this is a fun little game where you try to **read the computer's mind** by guessing its secret number!
 
+I thought to create a web version for it but that idea has been discarded as I've moved on to bigger pursuits.
 ---
 
 ## How to Play
