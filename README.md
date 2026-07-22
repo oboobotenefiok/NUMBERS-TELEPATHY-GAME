@@ -2,7 +2,7 @@
 
 > Hi friend, this is a fun little game where you try to **read the computer's mind** by guessing its secret number!
 
-I thought to create a web version for it but that idea has been discarded as I've moved on to bigger pursuits.
+Edit: I thought to create a web version for it but that idea has been discarded as I've moved on to bigger pursuits.
 ---
 
 ## How to Play
@@ -105,174 +105,11 @@ numbers_telepathy_game/
 | `main.rs` | Entry point - starts the game |
 | `game.rs` | Core game logic, secret number, win/loss conditions |
 | `input.rs` | User input handling, parsing, error messages |
-| `restart.rs` | Game restart and exit flow control |
 
----
 
-## 📁 Files Needed
 
-**Cargo.toml:**
 
-```toml
-[package]
-name = "numbers_telepathy_game"
-version = "0.1.0"
-edition = "2021"
 
-[dependencies]
-rand = "0.8"
-```
-
-**src/main.rs:**
-
-```rust
-mod game;
-mod input;
-mod restart;
-
-use game::Game;
-
-fn main() {
-    let mut game = Game::new();
-    game.start();
-}
-```
-
-**src/game.rs:**
-
-```rust
-use rand::Rng;
-use std::cmp::Ordering;
-use crate::input::get_player_guess;
-use crate::restart::handle_restart;
-
-pub struct Game {
-    secret_number: u32,
-}
-
-impl Game {
-    pub fn new() -> Self {
-        Game {
-            secret_number: rand::thread_rng().gen_range(1..=365),
-        }
-    }
-
-    pub fn start(&mut self) {
-        self.display_welcome();
-        self.play_loop();
-    }
-
-    fn display_welcome(&self) {
-        println!("WELCOME TO OBOT'S NUMBERS TELEPATHY GAME! \n
-        I'm Thinking Of A WHOLE NUMBER BETWEEN 1 AND 365");
-        println!("You Can Now Make Your Wildest Guesses");
-    }
-
-    fn play_loop(&mut self) {
-        loop {
-            let human_guess = get_player_guess();
-
-            if !self.is_valid_guess(human_guess) {
-                println!("Please type a number within the range of 1 and 365");
-                continue;
-            }
-
-            match self.check_guess(human_guess) {
-                Ordering::Less => println!("{human_guess}'s too small bro, ask for more."),
-                Ordering::Greater => println!("Jokes on you, {human_guess}'s too much bro, don't be greedy."),
-                Ordering::Equal => {
-                    self.handle_win();
-                    return;
-                }
-            }
-        }
-    }
-
-    fn is_valid_guess(&self, guess: u32) -> bool {
-        guess >= 1 && guess <= 365
-    }
-
-    fn check_guess(&self, guess: u32) -> Ordering {
-        guess.cmp(&self.secret_number)
-    }
-
-    fn handle_win(&self) {
-        println!(
-            "God of Telepathy, we hail thee! \n
-            {} is RIGHT!",
-            self.secret_number
-        );
-        handle_restart();
-    }
-}
-```
-
-**src/input.rs:**
-
-```rust
-use std::io;
-
-pub fn get_player_guess() -> u32 {
-    loop {
-        let mut human_guess = String::new();
-
-        io::stdin()
-            .read_line(&mut human_guess)
-            .expect("We need a number bro, jokes on you, lol :-)");
-
-        match human_guess.trim().parse() {
-            Ok(num) => return num,
-            Err(_) => display_input_error(),
-        }
-    }
-}
-
-fn display_input_error() {
-    println!("That's not a WHOLE NUMBER, bro! Try again! \n 
-    SUGGESTIONS: 1. Remove DECIMAL POINTS if you have any.\n 
-    2. Just type numbers only, be honest to yourself man.\n 
-    3. Confirm you've actually typed something.\n 
-    4. Remove negative signs if you have any.");
-}
-```
-
-**src/restart.rs:**
-
-```rust
-use std::io;
-
-pub fn handle_restart() {
-    println!("Type capital R to restart OR capital E to end the game");
-
-    loop {
-        let mut start_again = String::new();
-
-        io::stdin()
-            .read_line(&mut start_again)
-            .expect("We need a decision bro, jokes on you, lol :-)");
-
-        match start_again.trim() {
-            "R" => {
-                println!("Restarting the game...\n");
-                crate::main();
-                break;
-            }
-            "E" => {
-                println!("Thanks for playing, telepathy master!");
-                std::process::exit(0);
-            }
-            _ => {
-                println!("You're rich in everything \n
-                except the ability to follow simple instructions.\n
-                Type capital R or capital E only, bro!");
-                continue;
-            }
-        }
-    }
-}
-```
-
----
 
 ## How to Run
 
@@ -340,3 +177,4 @@ This Rust project demonstrates:
 Good Luck & Good Playing :-)
 
 **Obot Obo** — Developer
+
